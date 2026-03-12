@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import { HeroProvider } from '@/providers/HeroProvider';
+import { Toaster } from 'sonner';
 
 import '../styles/globals.css';
 
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang='es-MX'>
       <body className={`${outfitSans.variable} antialiased font-display`}>
+        <Toaster />
         <HeroProvider>
           <main className='min-h-screen bg-white'>{children}</main>
         </HeroProvider>
