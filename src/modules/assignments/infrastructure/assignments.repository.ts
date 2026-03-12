@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@/shared/supabase/client';
 import type { Assignment } from '../domain/assignments.entity';
 
 export const getAssignments = async (): Promise<Assignment[]> => {

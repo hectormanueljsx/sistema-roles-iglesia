@@ -1,5 +1,5 @@
-import { createClient } from '@/lib/supabase/client';
-import { createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/shared/supabase/client';
+import { createAdminClient } from '@/shared/supabase/server';
 import type { User } from '../domain/user.entity';
 
 export const getUsers = async (): Promise<User[]> => {

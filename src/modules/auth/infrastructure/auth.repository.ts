@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@/shared/supabase/client';
 import type { AuthUser } from '../domain/auth.entity';
 
 export const signIn = async (email: string, password: string) => {
