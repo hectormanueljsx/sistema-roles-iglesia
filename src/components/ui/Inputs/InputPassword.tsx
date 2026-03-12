@@ -1,7 +1,7 @@
 import { Input, type InputProps } from '@heroui/input';
 import { useState } from 'react';
 
-import { EyeSlashOutlined, EyeOutlined } from '../Icons';
+import { EyeOutlined, EyeSlashOutlined } from '../Icons';
 
 interface InputPasswordProps extends InputProps {}
 
