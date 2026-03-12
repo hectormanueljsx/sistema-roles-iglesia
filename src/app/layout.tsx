@@ -21,8 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='es-MX'>
-      <body className={`${outfitSans.variable} antialiased`}>
-        <HeroProvider>{children}</HeroProvider>
+      <body className={`${outfitSans.variable} antialiased font-display`}>
+        <HeroProvider>
+          <main className='min-h-screen bg-white'>{children}</main>
+        </HeroProvider>
       </body>
     </html>
   );
