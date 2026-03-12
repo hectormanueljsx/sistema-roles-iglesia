@@ -1,6 +1,6 @@
 import type { IconProps } from '@/shared/types';
 
-export const EyeSlashOutlined = ({ size, color }: IconProps) => {
+export const EyeSlashOutlined = ({ size = 16, color = 'currentColor' }: IconProps) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
