@@ -47,8 +47,8 @@ export const LoginForm = () => {
         <Image
           src='/banner-login.jpg'
           alt='Banner Login'
-          width={640}
-          height={960}
+          width={1920}
+          height={2880}
           priority
           className='h-45 w-full rounded-[20px] object-cover transition-all md:h-[calc(100vh-4rem)]'
         />
@@ -69,7 +69,7 @@ export const LoginForm = () => {
 
           <form
             onSubmit={handleSubmit}
-            className='flex flex-col gap-4'
+            className='flex flex-col gap-4 md:gap-6'
           >
             <InputEmail
               name='email'
