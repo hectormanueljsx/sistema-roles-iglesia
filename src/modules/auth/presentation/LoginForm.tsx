@@ -35,7 +35,7 @@ export const LoginForm = () => {
         return;
       }
 
-      router.push('/dashboard');
+      router.push('/resumen');
     },
   });
 
