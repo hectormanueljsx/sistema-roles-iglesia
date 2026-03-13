@@ -15,18 +15,12 @@ export const metadata: Metadata = {
   description: '',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='es-MX'>
       <body className={`${outfitSans.variable} antialiased font-display`}>
         <ToastProvider />
-        <HeroProvider>
-          <main className='bg-white'>{children}</main>
-        </HeroProvider>
+        <HeroProvider>{children}</HeroProvider>
       </body>
     </html>
   );

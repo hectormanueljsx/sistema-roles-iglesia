@@ -1,9 +1,8 @@
 import { redirect } from 'next/navigation';
 
 import { getSession } from '@/modules/auth/infrastructure/auth.server.repository';
-import { LoginForm } from '@/modules/auth/presentation/LoginForm';
 
-export default async function Page() {
+export default async function AuthLayout({ children }: { children: React.ReactNode }) {
   const session = await getSession();
 
   if (session) {
@@ -11,8 +10,8 @@ export default async function Page() {
   }
 
   return (
-    <section className='min-h-screen flex items-center justify-center p-6 md:p-8'>
-      <LoginForm />
-    </section>
+    <div className='bg-white'>
+      <main>{children}</main>
+    </div>
   );
 }
