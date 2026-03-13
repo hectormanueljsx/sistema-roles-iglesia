@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import * as Yup from 'yup';
 
-import { Button } from '@/components/ui/Buttons';
-import { InputEmail, InputPassword } from '@/components/ui/Inputs';
+import { Button } from '@/shared/components/Buttons';
+import { InputEmail, InputPassword } from '@/shared/components/Inputs';
 import { loginUseCase } from '../application/login.usecase';
 
 export const LoginForm = () => {
