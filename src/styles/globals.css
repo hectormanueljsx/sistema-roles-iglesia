@@ -5,4 +5,8 @@
 
 @theme {
   --font-display: 'Outfit', sans-serif;
+  --font-size-tiny: 0.75rem;
+  --font-size-small: 1rem;
+  --font-size-medium: 1.125rem;
+  --font-size-large: 1.15rem;
 }
