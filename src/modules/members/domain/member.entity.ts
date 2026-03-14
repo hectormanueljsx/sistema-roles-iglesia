@@ -6,3 +6,8 @@ export interface Member {
   active?: boolean;
   created_at?: string;
 }
+
+export interface MemberResponse {
+  data?: Member;
+  error?: string;
+}

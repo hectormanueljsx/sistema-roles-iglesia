@@ -1,5 +1,5 @@
 import { createClient } from '@/shared/supabase/client';
-import type { Member } from '../domain/member.entity';
+import type { Member, MemberResponse } from '../domain/member.entity';
 
 export const getMembers = async (): Promise<Member[]> => {
   const supabase = createClient();
@@ -17,26 +17,35 @@ export const getMemberById = async (id: string): Promise<Member | null> => {
   return data;
 };
 
-export const createMember = async (member: Member): Promise<Member> => {
+export const createMember = async (member: Member): Promise<MemberResponse> => {
   const supabase = createClient();
   const { data, error } = await supabase.from('members').insert(member).select().single();
 
-  if (error) throw error;
+  if (error) {
+    return { error: error.message };
+  }
+
   return data;
 };
 
-export const updateMember = async (id: string, member: Partial<Member>): Promise<Member> => {
+export const updateMember = async (id: string, member: Partial<Member>): Promise<MemberResponse> => {
   const supabase = createClient();
   const { data, error } = await supabase.from('members').update(member).eq('id', id).select().single();
 
-  if (error) throw error;
+  if (error) {
+    return { error: error.message };
+  }
+
   return data;
 };
 
-export const deleteMember = async (id: string): Promise<Member> => {
+export const deleteMember = async (id: string): Promise<MemberResponse> => {
   const supabase = createClient();
   const { data, error } = await supabase.from('members').update({ active: false }).eq('id', id).select().single();
 
-  if (error) throw error;
+  if (error) {
+    return { error: error.message };
+  }
+
   return data;
 };
