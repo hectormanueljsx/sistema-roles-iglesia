@@ -44,7 +44,7 @@
         "noUnknownAtRules": "off"
       },
       "correctness": {
-        "noUnusedImports": "warn"
+        "noUnusedImports": "error"
       },
       "a11y": {
         "noSvgWithoutTitle": "off",
