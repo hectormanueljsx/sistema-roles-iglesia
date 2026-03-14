@@ -82,6 +82,7 @@ export const LoginForm = () => {
               placeholder='Correo electrónico'
               isInvalid={touched.email && !!errors.email}
               errorMessage={touched.email && errors.email}
+              isRequired
               autoComplete='email'
             />
 
@@ -94,6 +95,7 @@ export const LoginForm = () => {
               placeholder='Contraseña'
               isInvalid={touched.password && !!errors.password}
               errorMessage={touched.password && errors.password}
+              isRequired
               autoComplete='current-password'
             />
 

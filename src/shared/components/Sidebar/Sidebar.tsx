@@ -26,9 +26,9 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <div className='flex h-screen bg-(--color-background) overflow-hidden'>
+    <div className='flex h-screen bg-white overflow-hidden'>
       <aside
-        className={`fixed top-0 left-0 lg:static z-50 flex flex-col justify-between p-5 h-full w-full lg:w-67.5 bg-(--color-background) lg:shadow-[2px_0_8px_rgba(0,0,0,0.08)] transform transition-all duration-300 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}
+        className={`fixed top-0 left-0 lg:static z-50 flex flex-col justify-between p-5 h-full w-full lg:w-67.5 bg-white lg:shadow-[2px_0_8px_rgba(0,0,0,0.08)] transform transition-all duration-300 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}
       >
         <div className='flex flex-col gap-10'>
           <div className='relative'>
@@ -114,7 +114,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
         <footer className='flex flex-col gap-10'>
           <button
             type='button'
-            className='w-full flex gap-4 items-center p-3 cursor-pointer rounded-md font-medium text-(--color-primary) bg-(--color-background-selected) transition-all hover:text-(--color-background) hover:bg-(--color-danger)'
+            className='w-full flex gap-4 items-center p-3 cursor-pointer rounded-md font-medium text-(--color-primary) bg-(--color-background-selected) transition-all hover:text-white hover:bg-(--color-danger)'
             onClick={handleSignOut}
           >
             <LogOut size={20} />
@@ -123,7 +123,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
 
           <div className='flex gap-2.5 items-center'>
             <div className='w-10 h-10 bg-(--color-primary) rounded-md flex items-center justify-center'>
-              <p className='font-semibold text-(--color-background)'>{getInitialLetters(user?.full_name)}</p>
+              <p className='font-semibold text-white'>{getInitialLetters(user?.full_name)}</p>
             </div>
 
             <div className='flex flex-col gap-0.5'>
@@ -146,7 +146,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
         )}
 
         <main
-          className={`flex-1 p-8 overflow-auto ${
+          className={`flex-1 bg-(--color-background) p-8 overflow-auto ${
             isMobileOpen ? 'pointer-events-none select-none lg:pointer-events-auto' : ''
           }`}
         >

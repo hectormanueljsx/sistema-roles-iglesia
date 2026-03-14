@@ -1,4 +1,4 @@
-import { Button as ButtonBase, type ButtonProps as ButtonBaseProps } from '@heroui/button';
+import { Button as ButtonBase, type ButtonProps as ButtonBaseProps } from '@heroui/react';
 
 interface ButtonProps extends ButtonBaseProps {}
 
@@ -6,7 +6,7 @@ export const Button = ({
   type = 'button',
   size = 'md',
   variant = 'solid',
-  radius = 'md',
+  radius = 'sm',
   color = 'primary',
   ...props
 }: ButtonProps) => {

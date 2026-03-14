@@ -1,11 +1,11 @@
-import { Input, type InputProps } from '@heroui/input';
+import { Input, type InputProps } from '@heroui/react';
 
 interface InputEmailProps extends InputProps {}
 
 export const InputEmail = ({
   size = 'md',
   variant = 'bordered',
-  radius = 'md',
+  radius = 'sm',
   labelPlacement = 'outside-top',
   ...props
 }: InputEmailProps) => {

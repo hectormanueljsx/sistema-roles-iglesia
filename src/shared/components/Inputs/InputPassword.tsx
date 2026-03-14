@@ -1,4 +1,4 @@
-import { Input, type InputProps } from '@heroui/input';
+import { Input, type InputProps } from '@heroui/react';
 import { useState } from 'react';
 
 import { Eye, EyeOff } from '../Icons';
@@ -8,7 +8,7 @@ interface InputPasswordProps extends InputProps {}
 export const InputPassword = ({
   size = 'md',
   variant = 'bordered',
-  radius = 'md',
+  radius = 'sm',
   labelPlacement = 'outside-top',
   ...props
 }: InputPasswordProps) => {
