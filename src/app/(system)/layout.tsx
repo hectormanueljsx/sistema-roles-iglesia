@@ -11,7 +11,7 @@ export default async function SystemLayout({ children }: { children: React.React
   }
 
   return (
-    <div className='bg-white'>
+    <div className='bg-(--color-background)'>
       <Sidebar>{children}</Sidebar>
     </div>
   );

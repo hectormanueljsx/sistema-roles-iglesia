@@ -1,7 +1,7 @@
 import { Input, type InputProps } from '@heroui/input';
 import { useState } from 'react';
 
-import { EyeOutlined, EyeSlashOutlined } from '../Icons';
+import { Eye, EyeOff } from '../Icons';
 
 interface InputPasswordProps extends InputProps {}
 
@@ -27,11 +27,11 @@ export const InputPassword = ({
       endContent={
         <button
           aria-label='toggle password visibility'
-          className='text-[#11171c] focus:outline-solid outline-transparent'
+          className='focus:outline-solid outline-transparent'
           type='button'
           onClick={toggleVisibility}
         >
-          {isVisible ? <EyeSlashOutlined /> : <EyeOutlined />}
+          {isVisible ? <EyeOff /> : <Eye />}
         </button>
       }
     />

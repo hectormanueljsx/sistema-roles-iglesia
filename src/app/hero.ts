@@ -9,4 +9,26 @@ export default heroui({
       large: '1.15rem',
     },
   },
+  themes: {
+    light: {
+      colors: {
+        primary: {
+          DEFAULT: '#2d68fe',
+          foreground: '#ffffff',
+        },
+        foreground: {
+          DEFAULT: '#324054',
+          foreground: '#324054',
+        },
+        default: {
+          DEFAULT: '#71839b',
+          foreground: '#71839b',
+        },
+        danger: {
+          DEFAULT: '#ff472e',
+          foreground: '#ff472e',
+        },
+      },
+    },
+  },
 });

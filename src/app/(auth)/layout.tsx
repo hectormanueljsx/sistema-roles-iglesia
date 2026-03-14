@@ -10,7 +10,7 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
   }
 
   return (
-    <div className='bg-white'>
+    <div className='bg-(--color-background)'>
       <main>{children}</main>
     </div>
   );

@@ -57,8 +57,10 @@ export const LoginForm = () => {
       <div className='w-full flex justify-center md:w-1/2'>
         <div className='flex flex-col gap-6 max-w-97 md:gap-12'>
           <div className='flex flex-col gap-4 md:gap-7'>
-            <p className='font-semibold text-3xl text-[#11181c] transition-all lg:text-4xl'>Bienvenido de nuevo 👋</p>
-            <div className='flex flex-col gap-1.5 text-[#11181c]'>
+            <p className='font-semibold text-3xl text-(--color-text-primary) transition-all lg:text-4xl'>
+              Bienvenido de nuevo 👋
+            </p>
+            <div className='flex flex-col gap-1.5 text-(--secondary-gray)'>
               <p className='text-base transition-all lg:text-xl'>
                 "Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres; sabiendo que del
                 Señor recibiréis la recompensa de la herencia, porque a Cristo el Señor servís."
