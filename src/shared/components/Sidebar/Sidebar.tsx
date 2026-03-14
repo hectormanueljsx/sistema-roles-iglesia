@@ -31,12 +31,10 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
         className={`fixed top-0 left-0 lg:static z-50 flex flex-col justify-between p-5 h-full w-full lg:w-67.5 bg-(--color-background) lg:shadow-[2px_0_8px_rgba(0,0,0,0.08)] transform transition-all duration-300 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}
       >
         <div className='flex flex-col gap-10'>
-          <div className='relative flex items-center justify-center'>
-            <div className='flex flex-col gap-4 items-center'>
-              {/* PENDING: AGREGAR LOGO IGLESIA */}
-              <p className='font-semibold text-(--color-primary) text-lg text-center leading-tight'>
-                Iglesia Cristiana Evangélica Príncipe de Paz
-              </p>
+          <div className='relative'>
+            <div className='flex flex-col justify-start sm:items-center text-lg font-semibold text-(--color-primary) leading-tight'>
+              <p className='leading-tight'>Iglesia Cristiana Evangélica</p>
+              <p className='leading-tight'>Príncipe de Paz</p>
             </div>
 
             <button
