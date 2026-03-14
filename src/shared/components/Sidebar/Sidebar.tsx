@@ -1,11 +1,15 @@
 'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { signOut } from '@/modules/auth/infrastructure/auth.client.repository';
-import { SIDEBAR_MENU } from '@/shared/utils/constants';
+import { useUser } from '@/providers/UserProvider';
+import { SIDEBAR_OPTIONS } from '@/shared/utils/constants';
+import { ROLE_LABELS } from '@/shared/utils/constants/dictionaries';
+import { getInitialLetters } from '@/shared/utils/helpers';
 import { ChevronDown, ChevronUp, LogOut, Menu, X } from '../Icons';
 
 export const Sidebar = ({ children }: { children: React.ReactNode }) => {
@@ -13,6 +17,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const [openMenuItem, setOpenMenuItem] = useState<string | null>(null);
 
   const router = useRouter();
+  const { user } = useUser();
 
   const handleSignOut = async () => {
     await signOut();
@@ -44,7 +49,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
           </div>
 
           <nav>
-            {SIDEBAR_MENU.map(({ label, redirect, icon: Icon, children }) => {
+            {SIDEBAR_OPTIONS.map(({ label, redirect, icon: Icon, children }) => {
               if (!children) {
                 return (
                   <Link
@@ -75,35 +80,59 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
                     {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                   </button>
 
-                  {isOpen && (
-                    <div className='ml-9'>
-                      {children.map(({ label, redirect, icon: Icon }) => (
-                        <Link
-                          key={label}
-                          href={redirect}
-                          className='w-full flex gap-4 items-center p-3 cursor-pointer rounded-md font-medium text-(--color-text-primary) hover:text-(--color-primary) hover:bg-(--color-background-selected)'
-                        >
-                          {Icon && <Icon size={20} />}
-                          {label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 1, height: 0 }}
+                        animate={{
+                          opacity: 1,
+                          height: 'auto',
+                          transition: {
+                            type: 'keyframes',
+                          },
+                        }}
+                        exit={{ opacity: 1, height: 0 }}
+                        className='ml-9 overflow-hidden'
+                      >
+                        {children.map(({ label, redirect, icon: Icon }) => (
+                          <Link
+                            key={label}
+                            href={redirect}
+                            className='w-full flex gap-4 items-center p-3 cursor-pointer rounded-md font-medium text-(--color-text-primary) hover:text-(--color-primary) hover:bg-(--color-background-selected)'
+                          >
+                            {Icon && <Icon size={20} />}
+                            {label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
           </nav>
         </div>
 
-        <footer className=''>
+        <footer className='flex flex-col gap-10'>
           <button
             type='button'
-            className='w-full flex gap-4 items-center p-3 cursor-pointer rounded-md font-medium text-(--color-text-primary) hover:text-(--color-primary) hover:bg-(--color-background-selected)'
+            className='w-full flex gap-4 items-center p-3 cursor-pointer rounded-md font-medium text-(--color-primary) bg-(--color-background-selected) transition-all hover:text-(--color-background) hover:bg-(--color-danger)'
             onClick={handleSignOut}
           >
             <LogOut size={20} />
             <p>Cerrar Sesión</p>
           </button>
+
+          <div className='flex gap-2.5 items-center'>
+            <div className='w-10 h-10 bg-(--color-primary) rounded-md flex items-center justify-center'>
+              <p className='font-semibold text-(--color-background)'>{getInitialLetters(user?.full_name)}</p>
+            </div>
+
+            <div className='flex flex-col gap-0.5'>
+              <p className='text-xs text-(--color-text-primary)'>{user?.full_name}</p>
+              <p className='text-xs text-(--color-text-secondary)'>{ROLE_LABELS[user?.role || 'editor']}</p>
+            </div>
+          </div>
         </footer>
       </aside>
 

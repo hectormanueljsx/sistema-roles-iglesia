@@ -9,7 +9,7 @@ import {
   Users,
 } from '@/shared/components/Icons';
 
-export const SIDEBAR_MENU = [
+export const SIDEBAR_OPTIONS = [
   { label: 'Resumen', redirect: '/resumen', icon: LayoutDashboard },
   {
     label: 'Roles',
