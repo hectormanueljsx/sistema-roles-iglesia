@@ -8,8 +8,14 @@ export type ResponseSuccess<T> = {
 
 export type ResponseResult<T> = ResponseSuccess<T> | ResponseError;
 
-export interface IconProps {
+export type PageProps = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
+export type IconProps = {
   size?: number;
   color?: string;
   strokeWidth?: number;
-}
+};
