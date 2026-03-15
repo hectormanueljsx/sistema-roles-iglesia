@@ -1,6 +1,6 @@
-import type { Assignment } from '../domain/assignments.entity';
+import type { AssignmentResponse } from '../domain/assignments.entity';
 import { deleteAssignment } from '../infrastructure/assignments.repository';
 
-export const deleteAssignmentUseCase = async (id: string): Promise<Assignment> => {
+export const deleteAssignmentUseCase = async (id: string): Promise<AssignmentResponse> => {
   return await deleteAssignment(id);
 };

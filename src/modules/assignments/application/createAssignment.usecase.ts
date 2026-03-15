@@ -1,6 +1,6 @@
-import type { Assignment } from '../domain/assignments.entity';
+import type { Assignment, AssignmentResponse } from '../domain/assignments.entity';
 import { createAssignment } from '../infrastructure/assignments.repository';
 
-export const createAssignmentUseCase = async (assignment: Assignment): Promise<Assignment> => {
+export const createAssignmentUseCase = async (assignment: Assignment): Promise<AssignmentResponse> => {
   return await createAssignment(assignment);
 };
