@@ -20,10 +20,6 @@ export default heroui({
           DEFAULT: '#324054',
           foreground: '#324054',
         },
-        default: {
-          DEFAULT: '#ffffff',
-          foreground: '#324054',
-        },
         danger: {
           DEFAULT: '#ff472e',
           foreground: '#ff472e',
