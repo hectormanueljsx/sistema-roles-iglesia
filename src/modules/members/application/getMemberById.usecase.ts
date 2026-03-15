@@ -1,6 +1,6 @@
-import type { Member } from '../domain/member.entity';
+import type { MemberResponse } from '../domain/member.entity';
 import { getMemberById } from '../infrastructure/member.repository';
 
-export const getMemberByIdUseCase = async (id: string): Promise<Member | null> => {
-  return await getMemberById(id);
+export const getMemberByIdUseCase = async (id: string): Promise<MemberResponse> => {
+  return getMemberById(id);
 };

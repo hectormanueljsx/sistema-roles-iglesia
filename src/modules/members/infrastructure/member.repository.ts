@@ -9,12 +9,15 @@ export const getMembers = async (): Promise<Member[]> => {
   return data || [];
 };
 
-export const getMemberById = async (id: string): Promise<Member | null> => {
+export const getMemberById = async (id: string): Promise<MemberResponse> => {
   const supabase = createClient();
   const { data, error } = await supabase.from('members').select('*').eq('id', id).single();
 
-  if (error) throw error;
-  return data;
+  if (error) {
+    return { error: error.message };
+  }
+
+  return { data };
 };
 
 export const createMember = async (member: Member): Promise<MemberResponse> => {
@@ -25,7 +28,7 @@ export const createMember = async (member: Member): Promise<MemberResponse> => {
     return { error: error.message };
   }
 
-  return data;
+  return { data };
 };
 
 export const updateMember = async (id: string, member: Partial<Member>): Promise<MemberResponse> => {
@@ -36,7 +39,7 @@ export const updateMember = async (id: string, member: Partial<Member>): Promise
     return { error: error.message };
   }
 
-  return data;
+  return { data };
 };
 
 export const deleteMember = async (id: string): Promise<MemberResponse> => {
@@ -47,5 +50,5 @@ export const deleteMember = async (id: string): Promise<MemberResponse> => {
     return { error: error.message };
   }
 
-  return data;
+  return { data };
 };

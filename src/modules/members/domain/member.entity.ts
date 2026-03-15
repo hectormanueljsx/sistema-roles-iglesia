@@ -1,3 +1,5 @@
+import type { ResponseResult } from '@/shared/types';
+
 export interface Member {
   id?: string;
   name: string;
@@ -7,7 +9,4 @@ export interface Member {
   created_at?: string;
 }
 
-export interface MemberResponse {
-  data?: Member;
-  error?: string;
-}
+export type MemberResponse = ResponseResult<Member>;
