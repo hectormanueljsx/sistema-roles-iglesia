@@ -8,6 +8,7 @@ import { signOut } from '@/modules/auth/infrastructure/auth.client.repository';
 import { useUser } from '@/providers/UserProvider';
 import { ROLE_LABELS, SIDEBAR_OPTIONS } from '@/shared/utils/constants';
 import { getInitialLetters } from '@/shared/utils/helpers';
+import { Breadcrumb } from '../Breadcrumbs';
 import { LogOut, Menu, X } from '../Icons';
 
 export const Sidebar = ({ children }: { children: React.ReactNode }) => {
@@ -101,10 +102,12 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
         )}
 
         <main
-          className={`flex-1 bg-(--color-background) p-8 overflow-auto ${
+          className={`flex flex-1 flex-col gap-7.5 bg-(--color-background) p-8 overflow-auto ${
             isMobileOpen ? 'pointer-events-none select-none lg:pointer-events-auto' : ''
           }`}
         >
+          <Breadcrumb />
+
           {children}
         </main>
       </div>
