@@ -8,7 +8,7 @@ export default async function Page({ params }: PageProps) {
     <div className='flex flex-col gap-10'>
       <MemberForm
         action='update'
-        memberId={id}
+        id={id}
       />
     </div>
   );
