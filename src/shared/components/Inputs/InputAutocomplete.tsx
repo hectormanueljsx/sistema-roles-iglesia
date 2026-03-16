@@ -2,12 +2,11 @@ import { Autocomplete, AutocompleteItem, type AutocompleteProps } from '@heroui/
 
 import type { SelectOptions } from '@/shared/types';
 
-interface InputAutocompleteProps extends Omit<AutocompleteProps, 'children'> {
-  options?: SelectOptions[];
+interface InputAutocompleteProps extends Omit<AutocompleteProps<SelectOptions>, 'children' | 'items'> {
+  items: SelectOptions[];
 }
 
 export const InputAutocomplete = ({
-  options = [],
   size = 'md',
   variant = 'bordered',
   radius = 'sm',
@@ -23,9 +22,7 @@ export const InputAutocomplete = ({
       radius={radius}
       labelPlacement={labelPlacement}
     >
-      {options.map(opt => (
-        <AutocompleteItem key={opt.key}>{opt.label}</AutocompleteItem>
-      ))}
+      {item => <AutocompleteItem key={item.key}>{item.label}</AutocompleteItem>}
     </Autocomplete>
   );
 };

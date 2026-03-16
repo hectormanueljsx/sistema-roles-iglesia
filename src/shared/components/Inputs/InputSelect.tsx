@@ -2,12 +2,11 @@ import { Select, SelectItem, type SelectProps } from '@heroui/react';
 
 import type { SelectOptions } from '@/shared/types';
 
-interface InputSelectProps extends Omit<SelectProps, 'children'> {
-  options?: SelectOptions[];
+interface InputSelectProps extends Omit<SelectProps<SelectOptions>, 'children' | 'items'> {
+  items: SelectOptions[];
 }
 
 export const InputSelect = ({
-  options = [],
   size = 'md',
   variant = 'bordered',
   radius = 'sm',
@@ -23,9 +22,7 @@ export const InputSelect = ({
       radius={radius}
       labelPlacement={labelPlacement}
     >
-      {options.map(opt => (
-        <SelectItem key={opt.key}>{opt.label}</SelectItem>
-      ))}
+      {item => <SelectItem key={item.key}>{item.label}</SelectItem>}
     </Select>
   );
 };

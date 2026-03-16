@@ -1,3 +1,5 @@
+import type { Key } from 'react';
+
 export type ResponseError = {
   error: string;
 };
@@ -20,7 +22,7 @@ export type FormProps = {
 };
 
 export type SelectOptions = {
-  key: string | number;
+  key: Key;
   label: string;
 };
 

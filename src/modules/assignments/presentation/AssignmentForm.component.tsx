@@ -36,7 +36,7 @@ export const AssignmentForm = ({ action = 'create', id }: FormProps) => {
             onSelectionChange={(key: Key | null) => {
               setFieldValue('member_id', key?.toString() ?? '');
             }}
-            options={members}
+            items={members}
             onBlur={handleBlur}
             isClearable={false}
             isInvalid={touched.member_id && !!errors.member_id}
@@ -54,7 +54,7 @@ export const AssignmentForm = ({ action = 'create', id }: FormProps) => {
 
               if (value !== 'clases') setFieldValue('class_name', '');
             }}
-            options={SERVICE_TYPE_OPTIONS}
+            items={SERVICE_TYPE_OPTIONS}
             onBlur={handleBlur}
             isInvalid={touched.service_type && !!errors.service_type}
             errorMessage={touched.service_type && errors.service_type}
@@ -81,7 +81,7 @@ export const AssignmentForm = ({ action = 'create', id }: FormProps) => {
               const value = Array.from(keys)[0] as string;
               setFieldValue('shift', value);
             }}
-            options={SHIFT_TYPE_OPTIONS}
+            items={SHIFT_TYPE_OPTIONS}
             onBlur={handleBlur}
             isInvalid={touched.shift && !!errors.shift}
             errorMessage={touched.shift && errors.shift}
