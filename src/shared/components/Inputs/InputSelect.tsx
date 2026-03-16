@@ -20,6 +20,7 @@ export const InputSelect = ({
   return (
     <Select
       {...props}
+      placeholder='Seleccione una opción'
       size={size}
       variant={variant}
       radius={radius}
