@@ -1,12 +1,16 @@
 import { createClient } from '@/shared/supabase/client';
+import type { ResponseResult } from '@/shared/types';
 import type { Assignment, AssignmentResponse } from '../domain/assignments.entity';
 
-export const getAssignments = async (): Promise<Assignment[]> => {
+export const getAssignments = async (): Promise<ResponseResult<Assignment[]>> => {
   const supabase = createClient();
   const { data, error } = await supabase.from('assignments').select('*').order('date', { ascending: true });
 
-  if (error) throw error;
-  return data || [];
+  if (error) {
+    return { error: error.message };
+  }
+
+  return { data: data ?? [] };
 };
 
 export const getAssignmentById = async (id: string): Promise<AssignmentResponse> => {
