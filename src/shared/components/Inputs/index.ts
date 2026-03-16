@@ -1,3 +1,4 @@
+export * from './InputAutocomplete';
 export * from './InputDatePicker';
 export * from './InputEmail';
 export * from './InputPassword';

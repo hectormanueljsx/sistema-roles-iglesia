@@ -14,6 +14,16 @@ export type PageProps = {
   }>;
 };
 
+export type FormProps = {
+  action?: 'create' | 'update';
+  id?: string;
+};
+
+export type SelectOptions = {
+  key: string | number;
+  label: string;
+};
+
 export type IconProps = {
   size?: number;
   color?: string;

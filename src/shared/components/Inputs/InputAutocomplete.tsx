@@ -1,21 +1,21 @@
-import { Select, SelectItem, type SelectProps } from '@heroui/react';
+import { Autocomplete, AutocompleteItem, type AutocompleteProps } from '@heroui/react';
 
 import type { SelectOptions } from '@/shared/types';
 
-interface InputSelectProps extends Omit<SelectProps, 'children'> {
+interface InputAutocompleteProps extends Omit<AutocompleteProps, 'children'> {
   options?: SelectOptions[];
 }
 
-export const InputSelect = ({
+export const InputAutocomplete = ({
   options = [],
   size = 'md',
   variant = 'bordered',
   radius = 'sm',
   labelPlacement = 'outside-top',
   ...props
-}: InputSelectProps) => {
+}: InputAutocompleteProps) => {
   return (
-    <Select
+    <Autocomplete
       {...props}
       placeholder='Seleccione una opción'
       size={size}
@@ -24,8 +24,8 @@ export const InputSelect = ({
       labelPlacement={labelPlacement}
     >
       {options.map(opt => (
-        <SelectItem key={opt.key}>{opt.label}</SelectItem>
+        <AutocompleteItem key={opt.key}>{opt.label}</AutocompleteItem>
       ))}
-    </Select>
+    </Autocomplete>
   );
 };
