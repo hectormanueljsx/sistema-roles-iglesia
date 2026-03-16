@@ -1,4 +1,4 @@
-import { AssignmentForm } from '@/modules/assignments/presentation/AssignmentForm';
+import { AssignmentForm } from '@/modules/assignments/presentation/AssignmentForm.component';
 import type { PageProps } from '@/shared/types';
 
 export default async function Page({ params }: PageProps) {

@@ -1,4 +1,4 @@
-import { AssignmentForm } from '@/modules/assignments/presentation/AssignmentForm';
+import { AssignmentForm } from '@/modules/assignments/presentation/AssignmentForm.component';
 
 export default function Page() {
   return (

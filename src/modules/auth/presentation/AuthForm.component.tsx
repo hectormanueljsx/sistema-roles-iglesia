@@ -1,43 +1,13 @@
 'use client';
 
-import { useFormik } from 'formik';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
-import * as Yup from 'yup';
 
 import { Button } from '@/shared/components/Buttons';
 import { InputEmail, InputPassword } from '@/shared/components/Inputs';
-import { loginUseCase } from '../application/login.usecase';
+import { useAuthForm } from '../application/useAuthForm.hook';
 
-export const LoginForm = () => {
-  const router = useRouter();
-
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: Yup.object().shape({
-      email: Yup.string()
-        .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Ingresa un correo electrónico válido')
-        .required('El correo electrónico es obligatorio'),
-      password: Yup.string()
-        .min(8, 'La contraseña debe tener al menos 8 caracteres')
-        .required('La contraseña es obligatoria'),
-    }),
-    onSubmit: async (values, { setSubmitting }) => {
-      const response = await loginUseCase(values.email, values.password);
-
-      if (response.error) {
-        toast.error(response.error);
-        setSubmitting(false);
-        return;
-      }
-
-      router.push('/resumen');
-    },
-  });
+export const AuthForm = () => {
+  const { formik } = useAuthForm();
 
   const { values, handleBlur, setFieldValue, errors, touched, isSubmitting, handleSubmit } = formik;
 
@@ -60,7 +30,7 @@ export const LoginForm = () => {
             <p className='font-semibold text-3xl text-(--color-text-primary) transition-all lg:text-4xl'>
               Bienvenido de nuevo 👋
             </p>
-            <div className='flex flex-col gap-1.5 text-(--secondary-gray)'>
+            <div className='flex flex-col gap-1.5 text-(--color-text-secondary)'>
               <p className='text-base transition-all lg:text-xl'>
                 "Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres; sabiendo que del
                 Señor recibiréis la recompensa de la herencia, porque a Cristo el Señor servís."

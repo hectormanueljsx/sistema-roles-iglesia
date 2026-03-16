@@ -1,4 +1,4 @@
-import { MemberForm } from '@/modules/members/presentation/MemberForm';
+import { MemberForm } from '@/modules/members/presentation/MemberForm.component';
 import type { PageProps } from '@/shared/types';
 
 export default async function Page({ params }: PageProps) {

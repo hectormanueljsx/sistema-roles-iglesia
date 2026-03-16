@@ -34,7 +34,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
         <div className='h-full flex flex-col justify-between gap-1.25'>
           <div className='flex flex-col justify-between gap-10'>
             <div className='relative'>
-              <div className='flex flex-col justify-start sm:items-center text-lg font-semibold text-(--color-primary) leading-tight'>
+              <div className='flex flex-col justify-start sm:items-center text-lg font-semibold text-(--color-text-primary) leading-tight'>
                 <p className='leading-tight'>Iglesia Cristiana Evangélica</p>
                 <p className='leading-tight'>Príncipe de Paz</p>
               </div>
@@ -56,8 +56,8 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
                     href={redirect}
                     className={`w-full flex gap-2 items-center p-2 cursor-pointer rounded-md font-medium ${
                       isActive(redirect)
-                        ? 'text-white bg-(--color-primary)'
-                        : 'text-(--color-text-primary) hover:text-(--color-primary) hover:bg-(--color-background-selected)'
+                        ? 'text-white bg-(--color-text-primary)'
+                        : 'text-(--color-text-primary) hover:text-(--color-text-primary) hover:bg-(--color-background-selected)'
                     }`}
                   >
                     {Icon && <Icon size={20} />}
@@ -70,7 +70,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
 
           <button
             type='button'
-            className='w-full flex gap-2 items-center p-3 cursor-pointer rounded-md font-medium text-(--color-primary) bg-(--color-background-selected) transition-all hover:text-white hover:bg-(--color-danger)'
+            className='w-full flex gap-2 items-center p-2 cursor-pointer rounded-md font-medium text-white bg-(--color-text-primary) transition-all hover:text-white hover:bg-(--color-danger)'
             onClick={handleSignOut}
           >
             <LogOut size={20} />
@@ -79,7 +79,7 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
         </div>
 
         <footer className='flex gap-2 items-center'>
-          <div className='w-10 h-10 bg-(--color-primary) rounded-md flex items-center justify-center'>
+          <div className='w-10 h-10 bg-(--color-text-primary) rounded-md flex items-center justify-center'>
             <p className='font-semibold text-white'>{getInitialLetters(user?.full_name)}</p>
           </div>
 

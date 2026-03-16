@@ -17,7 +17,7 @@ export const Breadcrumb = () => {
   return (
     <Breadcrumbs
       itemClasses={{
-        item: 'font-medium text-xl text-(--color-text-secondary) data-[current=true]:text-(--color-primary)',
+        item: 'font-medium text-xl text-(--color-text-secondary) data-[current=true]:text-(--color-text-primary)',
         separator: 'font-medium text-xl text-(--color-text-secondary) px-1.25',
       }}
       separator='|'

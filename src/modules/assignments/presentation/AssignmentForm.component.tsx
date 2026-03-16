@@ -38,6 +38,7 @@ export const AssignmentForm = ({ action = 'create', id }: FormProps) => {
             }}
             options={members}
             onBlur={handleBlur}
+            isClearable={false}
             isInvalid={touched.member_id && !!errors.member_id}
             errorMessage={touched.member_id && errors.member_id}
             isRequired

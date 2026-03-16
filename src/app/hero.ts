@@ -13,16 +13,19 @@ export default heroui({
     light: {
       colors: {
         primary: {
-          DEFAULT: '#2d68fe',
+          DEFAULT: '#404e3b',
           foreground: '#ffffff',
         },
+        default: {
+          foreground: '#404e3b',
+        },
         foreground: {
-          DEFAULT: '#324054',
-          foreground: '#324054',
+          DEFAULT: '#404e3b',
+          foreground: '#404e3b',
         },
         danger: {
-          DEFAULT: '#ff472e',
-          foreground: '#ff472e',
+          DEFAULT: '#eb4203',
+          foreground: '#eb4203',
         },
       },
     },
