@@ -1,87 +1,21 @@
 'use client';
 
-import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { toast } from 'sonner';
-import * as Yup from 'yup';
 
 import { Button } from '@/shared/components/Buttons';
 import { Card } from '@/shared/components/Cards';
 import { InputText } from '@/shared/components/Inputs';
-import { createMemberUseCase } from '../application/createMember.usecase';
-import { getMemberByIdUseCase } from '../application/getMemberById.usecase';
-import { updateMemberUseCase } from '../application/updateMember.usecase';
-import type { MemberResponse } from '../domain/member.entity';
+import type { FormProps } from '@/shared/types';
+import { useMemberForm } from '../application/useMemberForm.hook';
 
-interface MemberForm {
-  action?: string;
-  memberId?: string;
-}
-
-export const MemberForm = ({ action = 'create', memberId }: MemberForm) => {
-  const [initialValues, setInitialValues] = useState({
-    name: '',
-    last_name: '',
-    phone: '',
-  });
-  const [isLoadingMember, setIsLoadingMember] = useState(true);
-
+export const MemberForm = ({ action = 'create', id }: FormProps) => {
   const router = useRouter();
 
-  const formik = useFormik({
-    initialValues,
-    enableReinitialize: true,
-    validationSchema: Yup.object().shape({
-      name: Yup.string().required('El nombre es obligatorio.'),
-      last_name: Yup.string().required('El apellido es obligatorio.'),
-      phone: Yup.string().matches(/^\d{10}$/, 'El teléfono debe contener 10 dígitos.'),
-    }),
-    onSubmit: async (values, { setSubmitting }) => {
-      let response: MemberResponse;
-
-      if (action === 'update' && memberId) {
-        response = await updateMemberUseCase(memberId, values);
-      } else {
-        response = await createMemberUseCase(values);
-      }
-
-      if ('error' in response) {
-        toast.error(response.error);
-        setSubmitting(false);
-        return;
-      }
-
-      toast.success(action === 'update' ? 'Miembro actualizado con éxito' : 'Miembro creado con éxito');
-      router.push('/miembros');
-    },
-  });
-
-  useEffect(() => {
-    const getMember = async () => {
-      if (memberId) {
-        const response = await getMemberByIdUseCase(memberId);
-
-        if ('error' in response) {
-          router.push('/miembros');
-          return;
-        }
-
-        setInitialValues({
-          name: response.data.name,
-          last_name: response.data.last_name,
-          phone: response.data.phone || '',
-        });
-      }
-      setIsLoadingMember(false);
-    };
-
-    getMember();
-  }, [memberId]);
+  const { formik, isLoading } = useMemberForm({ action, memberId: id });
 
   const { values, handleBlur, setFieldValue, errors, touched, isSubmitting, handleSubmit } = formik;
 
-  if (isLoadingMember) return null;
+  if (isLoading) return null;
 
   return (
     <div className='max-w-170'>
@@ -133,7 +67,7 @@ export const MemberForm = ({ action = 'create', memberId }: MemberForm) => {
           <div className='col-span-1 flex justify-end gap-4 md:col-span-2 md:gap-6'>
             <Button
               type='button'
-              className='min-w-max p-0'
+              className='min-w-max p-0 bg-transparent'
               onPress={() => router.push('/miembros')}
               isDisabled={isSubmitting}
               color='default'

@@ -1,12 +1,16 @@
 import { createClient } from '@/shared/supabase/client';
+import type { ResponseResult } from '@/shared/types';
 import type { Member, MemberResponse } from '../domain/member.entity';
 
-export const getMembers = async (): Promise<Member[]> => {
+export const getMembers = async (): Promise<ResponseResult<Member[]>> => {
   const supabase = createClient();
   const { data, error } = await supabase.from('members').select('*').eq('active', true).order('name');
 
-  if (error) throw error;
-  return data || [];
+  if (error) {
+    return { error: error.message };
+  }
+
+  return { data: data ?? [] };
 };
 
 export const getMemberById = async (id: string): Promise<MemberResponse> => {

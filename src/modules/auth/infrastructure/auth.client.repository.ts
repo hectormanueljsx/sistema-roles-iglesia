@@ -12,7 +12,7 @@ export const signIn = async (email: string, password: string) => {
 
   if (profile && !profile.active) {
     await supabase.auth.signOut();
-    return { error: 'Usuario inactivo. Contacte al administrador.' };
+    return { error: 'Usuario inactivo. Contacte al administrador' };
   }
 
   return { data, profile };

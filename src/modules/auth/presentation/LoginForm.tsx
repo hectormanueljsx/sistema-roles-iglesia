@@ -20,11 +20,11 @@ export const LoginForm = () => {
     },
     validationSchema: Yup.object().shape({
       email: Yup.string()
-        .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Ingresa un correo electrónico válido.')
-        .required('El correo electrónico es obligatorio.'),
+        .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Ingresa un correo electrónico válido')
+        .required('El correo electrónico es obligatorio'),
       password: Yup.string()
-        .min(8, 'La contraseña debe tener al menos 8 caracteres.')
-        .required('La contraseña es obligatoria.'),
+        .min(8, 'La contraseña debe tener al menos 8 caracteres')
+        .required('La contraseña es obligatoria'),
     }),
     onSubmit: async (values, { setSubmitting }) => {
       const response = await loginUseCase(values.email, values.password);
